@@ -1,0 +1,39 @@
+<apex:page showHeader="true" sidebar="true">
+
+<c:RemoteTK />
+
+<input type="text" id="key"/>
+<button onclick="search()">Search</button>
+
+<div id="content"></div>
+
+<apex:includeScript value="{!$Resource.jQuery}"/>
+<!-- <apex:includeScript value="{!$Resource.forcetk}"/> -->
+
+<script>
+
+// var client = new forcetk.Client();
+// client.setSessionToken('{!$Api.Session_ID}');
+
+var client = new remotetk.Client();
+
+
+function search(key) {
+	var key = $('#key').val();
+	client.query("SELECT Name FROM Account WHERE Name LIKE '%" + key + "%' LIMIT 10", function(response) {
+		var l = response.records.length,
+			html = '<ul>';
+
+		for (var i=0; i<l; i++) {
+			html += '<li>' + response.records[i].Name + '</li>';
+		}
+
+		html += '</ul>'
+		$('#content').html(html);
+
+	});
+}
+
+</script>
+	
+</apex:page>

@@ -1,0 +1,23 @@
+<apex:page standardController="Contact" recordSetVar="contacts">
+
+Hello, {! $User.FirstName}
+    
+<apex:pageBlock >
+    <apex:pageBlockTable value="{!contacts}" var="contact">
+	    <apex:column value="{!contact.Name}"/>
+    </apex:pageBlockTable>
+</apex:pageBlock>
+    
+<apex:dataTable value="{!contacts}" var="contact">
+    <apex:column value="{!contact.Name}"/>
+</apex:dataTable>
+    
+<ul>
+    <apex:repeat value="{!contacts}" var="contact">
+        <li><apex:outputText value="{!contact.Name}"/>&nbsp;
+            <a href="contactDetails?id={!contact.Id}">Show details</a>
+        </li>    
+    </apex:repeat>
+</ul>
+
+</apex:page>

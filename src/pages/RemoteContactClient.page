@@ -1,0 +1,31 @@
+<apex:page showHeader="true" sidebar="true" controller="RemoteContact">
+
+<input type="text" id="searchKey"/>
+<button onclick="findByName()">Search</button>    
+<ul id="list"></ul>
+
+<apex:includeScript value="{!$Resource.jQuery}"/>
+<script>
+
+	function findByName() {
+        var searchKey = $('#searchKey').val(),
+            html = '';
+		$('#list').empty();
+        Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.RemoteContact.findByName}', searchKey,
+			function(result, event){
+				if (event.status) {
+					for (var i=0; i<result.length; i++) {
+						html += '<li>' + result[i].Name + '</li>';    
+					}
+					$('#list').html(html);
+				} else {
+					alert('Oops, something went wrong');                                
+				}
+			}, 
+			{escape: true}
+		);
+	}
+
+</script>
+
+</apex:page>
