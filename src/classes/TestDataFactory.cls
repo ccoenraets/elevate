@@ -30,8 +30,8 @@ public class TestDataFactory {
 	        City__c='San Francisco',
 	        Location__Latitude__s=37.7833,
 	     	Location__Longitude__s=122.4167);
-	 	insert w;
-		return w; 
+	    insert w;
+	    return w; 
 	}
 	
 	private static Merchandise__c createMerchandiseItem(String merchName, Warehouse__c w) {
@@ -40,23 +40,23 @@ public class TestDataFactory {
 	        Price__c=2,
 	        Quantity__c=1000,
 	        Warehouse__c = w.Id);
-		insert m;
-		return m; 
+	    insert m;
+	    return m; 
 	}
 	
 	private static Invoice__c createInvoiceStatement() {
-		Invoice__c inv = new Invoice__c();
+	    Invoice__c inv = new Invoice__c();
 	    insert inv;
-	  	return inv;
+	    return inv;
 	}
 	
 	private static Line_Item__c AddLineItem(Invoice__c inv, Merchandise__c m) {
-		Line_Item__c lineItem = new Line_Item__c(
+	    Line_Item__c lineItem = new Line_Item__c(
 	        Invoice__c = inv.Id,
 	        Merchandise__c = m.Id,
-	  		Unit_Price__c = m.Price__c,
-	  		Quantity__c = (Double)(10*Math.random()+1));
-		insert lineItem;
+	  	Unit_Price__c = m.Price__c,
+	  	Quantity__c = (Double)(10*Math.random()+1));
+	    insert lineItem;
 	    return lineItem;
 	}
 	
