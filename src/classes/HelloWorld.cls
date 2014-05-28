@@ -1,7 +1,7 @@
 public class HelloWorld{
     
     public static void sayYou() {
-	    System.debug('Hi');
+	    System.debug('You');
     }
     
     public void sayMe() {
