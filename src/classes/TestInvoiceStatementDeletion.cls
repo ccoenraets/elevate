@@ -1,7 +1,7 @@
 @isTest
 private class TestInvoiceStatementDeletion {
 	
-	static testmethod void TestDeleteInvoiceWithLineItem() {
+    static testmethod void TestDeleteInvoiceWithLineItem() {
         // Create an invoice with a line item then try to delete it
         Invoice__c inv = TestDataFactory.createOneInvoiceStatement(true);
         Test.startTest();
