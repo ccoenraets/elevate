@@ -10,8 +10,7 @@ global class CleanUpRecords implements Database.Batchable<sObject> {
 		return Database.getQueryLocator(query);
 	}
 	
-	global void execute(
-		Database.BatchableContext BC,	List<sObject> scope) {
+	global void execute(Database.BatchableContext BC, List<sObject> scope) {
 		delete scope;
 		Database.emptyRecycleBin(scope);
 	}
