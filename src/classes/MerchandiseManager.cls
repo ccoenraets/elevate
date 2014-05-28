@@ -17,10 +17,10 @@ global with sharing class MerchandiseManager {
 		List<Warehouse__c> warehouses = [SELECT ID from Warehouse__c WHERE Name =:warehouse LIMIT 1];
 		if(warehouses.size() > 0) {
 			Merchandise__c m = new Merchandise__c(
-			Name=name,
-			Price__c=price,
-			Quantity__c=inventory,
-			Warehouse__c=warehouses[0].Id);
+				Name=name,
+				Price__c=price,
+				Quantity__c=inventory,
+				Warehouse__c=warehouses[0].Id);
 			insert m;
 			return m.Id;
 		} else {
