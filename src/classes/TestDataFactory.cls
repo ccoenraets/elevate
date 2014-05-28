@@ -2,21 +2,21 @@
 public class TestDataFactory {
 	
 	public static Invoice__c createOneInvoiceStatement(Boolean withLineItem) {
-        // Create Warehouse if one does not exist
-        Warehouse__c w;
-        List<Warehouse__c> warehouse = [SELECT ID from Warehouse__c];
-        if(warehouse.size() == 0) {
-           w = createWarehouseLocation('Warehouse 1');
-        } else {
-           w = warehouse[0];
-        }
+	    // Create Warehouse if one does not exist
+            Warehouse__c w;
+            List<Warehouse__c> warehouse = [SELECT ID from Warehouse__c];
+            if(warehouse.size() == 0) {
+                w = createWarehouseLocation('Warehouse 1');
+            } else {
+                w = warehouse[0];
+            }
 
-        // Create one invoice
-		Invoice__c testInvoice = createInvoiceStatement();
-		if (withLineItem == true) {
-			// Create a merchandise item
-		 	Merchandise__c m = createMerchandiseItem('Orange juice',w);
-	  		// Create one line item and associate it with the invoice
+            // Create one invoice
+	    Invoice__c testInvoice = createInvoiceStatement();
+            if (withLineItem == true) {
+                // Create a merchandise item
+		Merchandise__c m = createMerchandiseItem('Orange juice',w);
+	  	// Create one line item and associate it with the invoice
       		AddLineItem(testInvoice, m);
 	    }
 	    return testInvoice;
